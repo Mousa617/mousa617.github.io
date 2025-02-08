@@ -1,184 +1,654 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InfiniteHorizonGames - Official Website</title>
   <meta name="google-site-verification" content="e7d7e7Bp1ADmZJCmQaNv8mrfvc365KVTG315aJA0RSI">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --primary-color: #FF7B00;
+      --secondary-color: #FF4B4B;
+      --accent-color: #40E0D0;
+      --dark-color: #2C3E50;
+      --light-color: #ECF0F1;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #3498db, #2c3e50) fixed;
-      color: #ecf0f1;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, var(--dark-color), #1a2634);
+      color: var(--light-color);
+      overflow-x: hidden;
     }
 
     header {
-      padding: 20px;
-      text-align: center;
-      position: relative;
-      background: linear-gradient(45deg, #2c3e50, #3498db);
-      border-bottom: 2px solid #ecf0f1;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    header h1 {
-      font-size: 2em;
-      margin: 0;
-      padding: 5px;
-      background: -webkit-linear-gradient(45deg, #2c3e50, #3498db);
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-container h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200% 200%;
       -webkit-background-clip: text;
-      color: transparent;
-      display: inline-block;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite;
     }
 
-    section {
-      max-width: 1200px;
-      margin: 20px auto;
-      text-align: center;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    h2 {
-      color: #2c3e50;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
     }
 
-    .game-card {
-      width: 300px;
-      margin: 20px auto;
-      padding: 15px;
-      background-color: #3498db;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       overflow: hidden;
     }
 
-    .game-card:hover {
-      transform: scale(1.05);
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%),
+        linear-gradient(45deg, var(--primary-color) 0%, transparent 70%),
+        linear-gradient(-45deg, var(--secondary-color) 0%, transparent 70%);
+      opacity: 0.1;
+      animation: backgroundPulse 15s ease infinite;
     }
 
-    .game-card h3 {
-      color: #2c3e50;
-      margin-bottom: 10px;
+    @keyframes backgroundPulse {
+      0% { transform: translate(-25%, -25%) rotate(0deg); }
+      100% { transform: translate(-25%, -25%) rotate(360deg); }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s ease infinite;
+    }
+
+    .cta-button {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.2rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transform: scale(0);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 25px rgba(255, 123, 0, 0.4),
+        0 0 40px rgba(255, 75, 75, 0.2);
+    }
+
+    .cta-button:hover::before {
+      transform: scale(1);
+    }
+
+    .games-section {
+      padding: 5rem 2rem;
+    }
+
+    .games-section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      border: 2px solid transparent;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .game-card:hover {
+      transform: translateY(-20px) scale(1.03) rotateX(5deg);
+      border-color: var(--primary-color);
+      box-shadow: 
+        0 15px 30px rgba(255, 123, 0, 0.3),
+        0 0 50px rgba(255, 75, 75, 0.2),
+        0 0 80px rgba(64, 224, 208, 0.1);
+    }
+
+    .game-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .game-card:hover::after {
+      transform: translateX(100%);
+    }
+
+    .game-card-inner {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .game-header h3 {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .game-card:hover .game-header h3 {
+      transform: scale(1.05);
+      color: var(--primary-color);
+    }
+
+    .badge {
+      background: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .game-card:hover .badge {
+      background: var(--secondary-color);
+      transform: scale(1.1);
+    }
+
+    .button {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      margin: 0.5rem;
+      display: inline-block;
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transform: scale(0);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 25px rgba(255, 123, 0, 0.4),
+        0 0 40px rgba(255, 75, 75, 0.2);
+    }
+
+    .button:hover::before {
+      transform: scale(1);
     }
 
     .game-card p {
-      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .game-card:hover p {
+      color: #ffffff;
+    }
+
+    .about-section {
+      padding: 5rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-section::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%),
+        linear-gradient(45deg, var(--accent-color) 0%, transparent 70%),
+        linear-gradient(-45deg, var(--primary-color) 0%, transparent 70%);
+      opacity: 0.05;
+      animation: rotateBg 20s linear infinite;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .about-section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    .developer-card {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform-style: preserve-3d;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .developer-card:hover {
+      transform: translateY(-10px) scale(1.02) rotateX(5deg);
+      border-color: var(--accent-color);
+      box-shadow: 
+        0 15px 30px rgba(64, 224, 208, 0.2),
+        0 0 50px rgba(255, 123, 0, 0.1);
+    }
+
+    .developer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .developer-card:hover::before {
+      left: 100%;
+    }
+
+    .developer-info {
+      position: relative;
+      z-index: 1;
+    }
+
+    .developer-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: transform 0.3s ease;
+    }
+
+    .developer-card:hover .developer-info h3 {
+      transform: scale(1.05);
+    }
+
+    .developer-info p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+    }
+
+    .developer-card:hover .developer-info p {
+      color: white;
+    }
+
+    .skills-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-badge {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .developer-card:hover .skill-badge {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
     }
 
     footer {
-      padding: 10px;
-      text-align: center;
-      background: linear-gradient(45deg, #2c3e50, #3498db);
-      border-top: 2px solid #ecf0f1;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3rem 2rem 1rem;
     }
 
-    .playstore-section {
-      text-align: center;
-      padding: 20px;
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .additional-design {
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      color: var(--light-color);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
       text-align: center;
-      padding: 20px;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-
 <body>
-
   <header>
-    <h1>InfiniteHorizon<span style="color: #3498db;">Games</span></h1>
+    <div class="logo-container">
+      <svg class="logo" viewBox="0 0 100 100" width="50" height="50">
+        <defs>
+          <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF4B4B"/>
+            <stop offset="50%" style="stop-color:#FF7B00"/>
+          </linearGradient>
+          <linearGradient id="seaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#40E0D0"/>
+            <stop offset="100%" style="stop-color:#20B2AA"/>
+          </linearGradient>
+        </defs>
+        
+        <!-- Background circle -->
+        <circle cx="50" cy="50" r="45" fill="white" stroke="#eee" stroke-width="2"/>
+        
+        <!-- Sunset stripes -->
+        <path d="M20 30 L80 30" stroke="#FF4B4B" stroke-width="8"/>
+        <path d="M20 40 L80 40" stroke="#FF7B00" stroke-width="8"/>
+        <path d="M20 50 L80 50" stroke="#FF9D40" stroke-width="8"/>
+        
+        <!-- Ocean triangles -->
+        <path d="M20 65 L50 55 L80 65 L80 75 L20 75 Z" fill="url(#seaGradient)"/>
+        
+        <!-- Sun circle -->
+        <circle cx="50" cy="50" r="8" fill="white"/>
+        
+        <!-- Stars -->
+        <circle cx="15" cy="20" r="2" fill="#FFD700"/>
+        <circle cx="85" cy="20" r="2" fill="#FFD700"/>
+        <circle cx="35" cy="15" r="2" fill="#FFD700"/>
+        <circle cx="65" cy="15" r="2" fill="#FFD700"/>
+        
+        <!-- Moon -->
+        <path d="M75 25 A 5 5 0 1 1 70 20" fill="none" stroke="#FFD700" stroke-width="2"/>
+      </svg>
+      <h1>InfiniteHorizon<span>Games</span></h1>
+    </div>
+    <nav>
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="intro">
-    <h2>Welcome to InfiniteHorizonGames</h2>
-    <p>Embark on an extraordinary gaming journey with our innovative 2D games. Immerse yourself in captivating experiences that redefine the boundaries of entertainment!</p>
-  </section>
-
-  <!-- Section for free games made by Godot -->
-  <section class="games-section">
-    <h2>Free (no ads, no in-app purchases) games made by Godot</h2>
-    <div class="game-card">
-      <h3>AI Apocalypse</h3>
-      <h4>Main Description</h4>
-      <p>A 2D top-down fun shooter game to play. The goal is to get the maximum kills. It's free, with no ads and no in-app purchases. There might be some bugs, but it's not the main game I am working on. However, please download it to support us! You can shoot lasers and grenades. The enemies are AI like ChatGPT, Copilot, Gemini, and more. This game is also available on Android in the Play Store, but there won't be many updates. I hope you download it! Available for Android, Windows, and Linux on itch.io and Play Store.</p>
-      <h4>More Explained Description</h4>
-      <p>The game is a shooter top-down 2D game. You can shoot grenades by right-clicking and lasers by left-clicking. Your goal is to get maximum kills and beat your high score. If you run out of ammo or grenades, you can shoot crates around to receive some ammo. Get ready for an amazing experience!</p>
-      <h4>Trailer</h4>
-      <p>[Trailer not provided]</p>
-      <h4>Developer(s), Idea, Art</h4>
-      <p>Developed entirely and coded by Mousa Salloum, the founder of InfiniteHorizonGames. The art (not all art by Mousa) and idea are by Mousa.</p>
-      <h4>Download</h4>
-      <p><a href="https://infinitehorizongames.itch.io/ai-apocalypse">AI Apocalypse on Itch.io</a> |<a href="https://play.google.com/store/apps/details?id=com.InfiniteHorizonGames.Mousa">AI Apocalypse on PlayStore early acess</a>  Play Store early acess (Not yet published)</p>
+  <div class="hero">
+    <div class="hero-content">
+      <h2>Welcome to InfiniteHorizonGames</h2>
+      <p>Embark on an extraordinary gaming journey with our innovative 2D games.</p>
+      <button class="cta-button">Explore Games</button>
     </div>
-    <div class="game-card">
-      <h3>ClickyWoo</h3>
-      <h4>Main Description</h4>
-      <p>ClickyWoo: Practise your clicking skills is a game where u have 30,ten or 1 min to press a button as many times,trying to beat ur record everytime,its good to practise clicking on mouses or just on a  screen for gamers or for other reasons,u can try double clicking and other methods<p>
-      <h4>Trailer</h4>
-      <p>[Trailer not provided]</p>
-      <h4>Developer(s), Idea, Art</h4>
-      <p>Developed entirely and coded by Mousa Salloum, the founder of InfiniteHorizonGames. The art  (by Mousa) and idea are by Mousa.</p>
-      <h4>Download</h4>s
-      <p><a href="https://infinitehorizongames.itch.io/clickywoo-practise-ur-gamer-clicking-skills">ClickyWoo on itch.io</a>  | [not provided yet] </p>
-      <p>Practise your gamer clicking skills.</p>
-      
-    </div>
-  </section>
+  </div>
 
-  <!-- Section for paid games made by Godot -->
-  <section class="games-section">
-    <h2>Paid (no ads, no in-app purchases) amazing games made by Godot</h2>
-    <div class="game-card">
-      <h3>Nowhere</h3>
-      <p>[Details not provided yet]</p>
-    </div>
-    <div class="game-card">
-      <h3>ClickyWooPremium</h3>
-      <p>Practise your gamer clicking skills.</p>
-      <h4>Main Description</h4>
-      <p>ClickyWoo Premium: Practise your clicking skills is a game where u have 30,ten or 1 min to press a button as many times,trying to beat ur record everytime,its good to practise clicking on mouses or just on a  screen for gamers or for other reasons,u can try double clicking and other methods
+  <section id="games" class="games-section">
+    <h2>Our Games Collection</h2>
+    <div class="game-grid">
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>AI Apocalypse</h3>
+            <span class="badge">Free</span>
+          </div>
+          <p>A 2D top-down shooter where you battle against AI enemies like ChatGPT, Copilot, and Gemini. Shoot lasers and grenades in this action-packed adventure!</p>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/ai-apocalypse" class="button">Get on Itch.io</a>
+            <a href="https://play.google.com/store/apps/details?id=com.InfiniteHorizonGames.Mousa" class="button">Get on PlayStore</a>
+          </div>
+        </div>
+      </div>
 
-Premium features:acess to all skins,acess to the 10 second and 1 minute option and you might get premium just to help us!Or me..Thanks so much!I also would thank you to just downloading the non premium version,its just nice seing views :)<p>
-      <h4>Trailer</h4>
-      <p>[Trailer not provided]</p>
-      <h4>Developer(s), Idea, Art</h4>
-      <p>Developed entirely and coded by Mousa Salloum, the founder of InfiniteHorizonGames. The art  (by Mousa) and idea are by Mousa.</p>
-      <h4>Download</h4>s
-      <p><a href="https://infinitehorizongames.itch.io/clickywoopremium-practise-ur-gamer-clicking-skills">ClickyWoo on Itch.io</a>  | [not provided yet] </p>
-      <p>Practise your gamer clicking skills.</p>
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>ClickyWoo</h3>
+            <span class="badge">Free</span>
+          </div>
+          <p>Practice your clicking skills with various timing modes. Perfect for gamers looking to improve their speed! Challenge yourself with different time limits.</p>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/clickywoo-practise-ur-gamer-clicking-skills" class="button">Get on Itch.io</a>
+            <a href="https://infinitehorizongames.itch.io/clickywoopremium-practise-ur-gamer-clicking-skills" class="button premium-button">Get Premium</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Developer Info Section -->
-  <section class="games-section">
-    <h2>Developer Info</h2>
-    <div class="game-card">
-      <h3>Mousa Salloum</h3>
-      <p>Hello, I'm Mousa Salloum, a Syrian Christian residing in Montreal, Quebec, Canada. I've acquired proficiency in coding through rigorous study, including courses like CS50 and mastery of languages such as Python, C, and SQL. Additionally, I've developed expertise in web development with HTML, CSS, and JavaScript, along with frameworks like Flask and libraries such as Pygame, JSON, and Requests. My passion for programming led me to explore game development, where I've honed my skills in game engines like Godot and Unreal Engine 5, finding immense fulfillment in bringing virtual worlds to life. I am the one who developed, coded, and did everything for every game, even the voices for AAA games are AI-generated!</p>
+  <section id="about" class="about-section">
+    <h2>About the Developer</h2>
+    <div class="developer-card">
+      <div class="developer-info">
+        <h3>Mousa Salloum</h3>
+        <p>Syrian Christian game developer based in Montreal, Quebec, Canada. Passionate about creating innovative gaming experiences that push the boundaries of creativity and technology. With a deep understanding of game development and programming, I strive to craft engaging and memorable games that resonate with players worldwide.</p>
+        <div class="skills-container">
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">C</span>
+          <span class="skill-badge">SQL</span>
+          <span class="skill-badge">Godot</span>
+          <span class="skill-badge">Unreal Engine 5</span>
+          <span class="skill-badge">Game Design</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2024 InfiniteHorizonGames. All rights reserved.</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>InfiniteHorizonGames</h3>
+        <p>Creating innovative gaming experiences</p>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-links">
+          <a href="https://infinitehorizongames.itch.io/" class="social-icon" title="Find us on Itch.io">
+            <i class="fas fa-gamepad"></i>
+          </a>
+          <a href="https://play.google.com/store/apps/dev?id=4830407566200037539" class="social-icon" title="Find us on Google Play">
+            <i class="fab fa-google-play"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 InfiniteHorizonGames. All rights reserved.</p>
+    </div>
   </footer>
 
-  <div class="playstore-section">
-    <h2>Available on the Play Store and Itch.io for all games</h2>
-    <p>Download our games for an unparalleled gaming experience! Specially games like Nowhere. Stay tuned for more exciting 2D and 3D realistic games!</p>
-  </div>
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (e.target.getAttribute('href') === '#contact') {
+          e.preventDefault();
+          alert('Contact email: notmousasalloum@gmail.com');
+        }
+      });
+    });
 
-  <section class="additional-design">
-    <h3>Explore the World of InfiniteHorizonGames</h3>
-    <p>Discover a universe of innovation and entertainment with our diverse collection of indie games. Dive into the extraordinary, where technology meets imagination. Join us on this thrilling journey!</p>
-  </section>
-
+    document.querySelector('.cta-button').addEventListener('click', () => {
+      document.querySelector('#games').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
 </body>
-
 </html>
