@@ -490,6 +490,51 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .platform-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .platform-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .platform-badge i {
+      font-size: 0.9rem;
+    }
+
+    .game-card:hover .platform-badge {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .no-ads-badge {
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-left: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .game-card:hover .no-ads-badge {
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 1rem;
@@ -568,10 +613,86 @@
       <div class="game-card">
         <div class="game-card-inner">
           <div class="game-header">
+            <h3>BalloonBrawl</h3>
+            <div>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
+          </div>
+          <p>A fast-paced, chaotic arena game where you control a balloon with a random color and a sharp dart. Pop other balloons, absorb their helium, and grow infinitely bigger while dodging attacks! Sprint to escape or chase enemies, but watch your helium levels. Become a massive, unstoppable force—if you survive long enough! Perfect for quick battles anytime.</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fab fa-windows"></i> Windows
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-linux"></i> Linux
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-android"></i> Android
+            </span>
+          </div>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/balloonbrawl" class="button">Get on Itch.io</a>
+            <a href="https://play.google.com/store/games?hl=en" class="button">Get on PlayStore</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>ClickyWoo</h3>
+            <div>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
+          </div>
+          <p>Challenge yourself in this competitive clicking game with multiple practice modes. Master your speed and precision through various timing challenges. Perfect for gamers who want to improve their clicking skills and compete for the highest scores!</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fab fa-windows"></i> Windows
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-linux"></i> Linux
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-android"></i> Android
+            </span>
+          </div>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/clickywoo-practise-ur-gamer-clicking-skills" class="button">Get on Itch.io</a>
+            <a href="https://infinitehorizongames.itch.io/clickywoopremium-practise-ur-gamer-clicking-skills" class="button premium-button">Get Premium on Itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
             <h3>AI Apocalypse</h3>
-            <span class="badge">Free</span>
+            <div>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
           </div>
           <p>A 2D top-down shooter where you battle against AI enemies like ChatGPT, Copilot, and Gemini. Shoot lasers and grenades in this action-packed adventure!</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fab fa-windows"></i> Windows
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-linux"></i> Linux
+            </span>
+            <span class="platform-badge">
+              <i class="fab fa-android"></i> Android
+            </span>
+          </div>
           <div class="game-links">
             <a href="https://infinitehorizongames.itch.io/ai-apocalypse" class="button">Get on Itch.io</a>
             <a href="https://play.google.com/store/apps/details?id=com.InfiniteHorizonGames.Mousa" class="button">Get on PlayStore</a>
@@ -582,13 +703,22 @@
       <div class="game-card">
         <div class="game-card-inner">
           <div class="game-header">
-            <h3>ClickyWoo</h3>
-            <span class="badge">Free</span>
+            <h3>Click The Sausage</h3>
+            <div>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
           </div>
-          <p>Practice your clicking skills with various timing modes. Perfect for gamers looking to improve their speed! Challenge yourself with different time limits.</p>
+          <p>A fast-paced, reflex-testing game where you chase and click a moving button! Race against time in this 20-second challenge to achieve the highest score possible. The button jumps around the screen, testing your speed and precision. Perfect for quick gaming sessions and improving your reaction time!</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fas fa-globe"></i> Web Browser
+            </span>
+          </div>
           <div class="game-links">
-            <a href="https://infinitehorizongames.itch.io/clickywoo-practise-ur-gamer-clicking-skills" class="button">Get on Itch.io</a>
-            <a href="https://infinitehorizongames.itch.io/clickywoopremium-practise-ur-gamer-clicking-skills" class="button premium-button">Get Premium</a>
+            <a href="https://infinitehorizongames.itch.io/reaction-checkersausage-edition" class="button">Play on Itch.io</a>
           </div>
         </div>
       </div>
@@ -600,7 +730,7 @@
     <div class="developer-card">
       <div class="developer-info">
         <h3>Mousa Salloum</h3>
-        <p>Syrian Christian game developer based in Montreal, Quebec, Canada. Passionate about creating innovative gaming experiences that push the boundaries of creativity and technology. With a deep understanding of game development and programming, I strive to craft engaging and memorable games that resonate with players worldwide.</p>
+        <p>Syrian Christian game developer based in Montreal, Quebec, Canada. As the sole developer behind InfiniteHorizonGames, I personally create and develop every game in our collection. Passionate about creating innovative gaming experiences that push the boundaries of creativity and technology. With a deep understanding of game development and programming, I strive to craft engaging and memorable games that resonate with players worldwide.</p>
         <div class="skills-container">
           <span class="skill-badge">Python</span>
           <span class="skill-badge">C</span>
