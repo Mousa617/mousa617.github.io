@@ -550,6 +550,52 @@
         font-size: 2rem;
       }
     }
+
+    .category-header {
+      font-size: 2rem;
+      margin: 3rem 0 1.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      position: relative;
+    }
+
+    .category-header::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      margin: 0.5rem auto;
+      border-radius: 3px;
+    }
+
+    .coming-soon-text {
+      text-align: center;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      animation: pulse 2s infinite;
+    }
+
+    .mobile-note {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem auto 2rem;
+      max-width: 800px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
   </style>
 </head>
 <body>
@@ -609,6 +655,16 @@
 
   <section id="games" class="games-section">
     <h2>Our Games Collection</h2>
+    
+    <!-- PC AAA Games Section -->
+    <h3 class="category-header">PC AAA Games</h3>
+    <p class="coming-soon-text">Coming soon! Our upcoming AAA titles are being crafted in Unreal Engine 5.</p>
+    
+    <!-- Mobile Games Section -->
+    <h3 class="category-header">Mobile Games</h3>
+    <div class="mobile-note">
+      Note: While some of these games are available for Windows and Linux, they're primarily designed for mobile platforms. Desktop performance may vary.
+    </div>
     <div class="game-grid">
       <div class="game-card">
         <div class="game-card-inner">
@@ -643,36 +699,6 @@
       <div class="game-card">
         <div class="game-card-inner">
           <div class="game-header">
-            <h3>ClickyWoo</h3>
-            <div>
-              <span class="badge">Free</span>
-              <span class="no-ads-badge">
-                <i class="fas fa-ban"></i> No Ads
-              </span>
-            </div>
-          </div>
-          <p>Challenge yourself in this competitive clicking game with multiple practice modes. Master your speed and precision through various timing challenges. Perfect for gamers who want to improve their clicking skills and compete for the highest scores!</p>
-          <div class="platform-badges">
-            <span class="platform-badge">
-              <i class="fab fa-windows"></i> Windows
-            </span>
-            <span class="platform-badge">
-              <i class="fab fa-linux"></i> Linux
-            </span>
-            <span class="platform-badge">
-              <i class="fab fa-android"></i> Android
-            </span>
-          </div>
-          <div class="game-links">
-            <a href="https://infinitehorizongames.itch.io/clickywoo-practise-ur-gamer-clicking-skills" class="button">Get on Itch.io</a>
-            <a href="https://infinitehorizongames.itch.io/clickywoopremium-practise-ur-gamer-clicking-skills" class="button premium-button">Get Premium on Itch.io</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <div class="game-card-inner">
-          <div class="game-header">
             <h3>AI Apocalypse</h3>
             <div>
               <span class="badge">Free</span>
@@ -700,6 +726,30 @@
         </div>
       </div>
 
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>SnowBoard Shooter</h3>
+            <div>
+              <span class="badge">Coming Soon</span>
+            </div>
+          </div>
+          <p>Coming soon!</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fab fa-android"></i> Android
+            </span>
+          </div>
+          <div class="game-links">
+            <a href="#" class="button" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Browser Games Section -->
+    <h3 class="category-header">Browser Games</h3>
+    <div class="game-grid">
       <div class="game-card">
         <div class="game-card-inner">
           <div class="game-header">
