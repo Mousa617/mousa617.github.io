@@ -284,6 +284,26 @@
       transform: scale(1.1);
     }
 
+    .best-badge {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-right: 0.5rem;
+      box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+      animation: bestBadgePulse 2s infinite;
+    }
+
+    @keyframes bestBadgePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
     .button {
       padding: 1rem 2rem;
       border-radius: 50px;
@@ -731,6 +751,9 @@
           <div class="game-header">
             <h3>SnowBoard Shooter</h3>
             <div>
+              <span class="best-badge">
+                <i class="fas fa-trophy"></i> BEST
+              </span>
               <span class="badge">Coming Soon</span>
             </div>
           </div>
@@ -749,6 +772,9 @@
 
     <!-- Browser Games Section -->
     <h3 class="category-header">Browser Games</h3>
+    <div class="mobile-note">
+      Note: Our browser games are designed to be played on any device with a web browser - desktop, mobile, or tablet!
+    </div>
     <div class="game-grid">
       <div class="game-card">
         <div class="game-card-inner">
@@ -769,6 +795,55 @@
           </div>
           <div class="game-links">
             <a href="https://infinitehorizongames.itch.io/reaction-checkersausage-edition" class="button">Play on Itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>RoastBattleRoyale: YouvsAI</h3>
+            <div>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
+          </div>
+          <p>Challenge your wit in this unique roasting competition against AI! Trade clever roasts with artificial intelligence and score points for the better burns. Can you outroast the machine? Every witty comeback counts as you battle for roasting supremacy!</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fas fa-globe"></i> Web Browser
+            </span>
+          </div>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/roastbattleroyale" class="button">Play on Itch.io</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-inner">
+          <div class="game-header">
+            <h3>FreeRide</h3>
+            <div>
+              <span class="best-badge">
+                <i class="fas fa-trophy"></i> BEST
+              </span>
+              <span class="badge">Free</span>
+              <span class="no-ads-badge">
+                <i class="fas fa-ban"></i> No Ads
+              </span>
+            </div>
+          </div>
+          <p>Take the wheel in this relaxing driving experience! Cruise around freely in an open world, enjoying the scenery and freedom of the road. No missions, no pressure - just pure driving enjoyment at your own pace.</p>
+          <div class="platform-badges">
+            <span class="platform-badge">
+              <i class="fas fa-globe"></i> Web Browser
+            </span>
+          </div>
+          <div class="game-links">
+            <a href="https://infinitehorizongames.itch.io/freeride" class="button">Play on Itch.io</a>
           </div>
         </div>
       </div>
