@@ -616,6 +616,65 @@
       50% { opacity: 1; }
       100% { opacity: 0.6; }
     }
+
+    .donate-section {
+      padding: 5rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      position: relative;
+      text-align: center;
+    }
+
+    .donate-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .donate-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .donate-container p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .amount-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .amount-btn {
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--primary-color);
+      background: transparent;
+      color: var(--light-color);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .amount-btn:hover, .amount-btn.selected {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+    }
+
+    #paypal-button-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
@@ -868,6 +927,21 @@
     </div>
   </section>
 
+  <section class="donate-section">
+    <h2>Support the Developer</h2>
+    <div class="donate-container">
+      <p>Your support helps me continue creating free, ad-free games for everyone to enjoy!</p>
+      <div class="amount-buttons">
+        <button class="amount-btn" data-amount="5">$5</button>
+        <button class="amount-btn" data-amount="10">$10</button>
+        <button class="amount-btn" data-amount="25">$25</button>
+        <button class="amount-btn" data-amount="50">$50</button>
+        <button class="amount-btn custom">Custom</button>
+      </div>
+      <div id="paypal-button-container"></div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -904,6 +978,98 @@
     document.querySelector('.cta-button').addEventListener('click', () => {
       document.querySelector('#games').scrollIntoView({ behavior: 'smooth' });
     });
+  </script>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=AVWdbft0yHJ_XMD9qLT2fywMrtagTRNNsCpnHplXsvV8Nsz6tJqLCkOBP12hT2F7NAD8FgDezMj-eb_k&currency=USD"></script>
+  <script>
+    let selectedAmount = 5;
+    let paypalButtonsRendered = false;
+
+    // Wait for PayPal SDK to load
+    window.addEventListener('load', function() {
+        if (typeof paypal !== 'undefined') {
+            initPayPalButton();
+        } else {
+            console.error('PayPal SDK failed to load');
+        }
+    });
+
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            try {
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                
+                if (btn.classList.contains('custom')) {
+                    const amount = prompt('Enter amount in USD:', '10');
+                    if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
+                        selectedAmount = parseFloat(amount);
+                    } else {
+                        selectedAmount = 5; // Default amount if invalid input
+                        alert('Invalid amount. Using default $5.');
+                    }
+                } else {
+                    selectedAmount = parseFloat(btn.dataset.amount);
+                }
+                
+                // Clear and reinitialize PayPal buttons
+                const container = document.getElementById('paypal-button-container');
+                if (container) {
+                    container.innerHTML = '';
+                    initPayPalButton();
+                }
+            } catch (error) {
+                console.error('Error handling amount selection:', error);
+                alert('There was an error processing your selection. Please try again.');
+            }
+        });
+    });
+
+    function initPayPalButton() {
+        try {
+            if (typeof paypal === 'undefined') {
+                throw new Error('PayPal SDK not loaded');
+            }
+
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'donate',
+                },
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: selectedAmount.toFixed(2)
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Thank you for your support, ' + (details.payer.name.given_name || 'valued supporter') + '!');
+                    }).catch(function(error) {
+                        console.error('Error capturing PayPal order:', error);
+                        alert('There was an error processing your donation. Please try again.');
+                    });
+                },
+                onError: function(err) {
+                    console.error('PayPal button error:', err);
+                    alert('There was an error with the payment system. Please try again later.');
+                }
+            }).render('#paypal-button-container')
+            .catch(function(error) {
+                console.error('Error rendering PayPal buttons:', error);
+            });
+            
+            paypalButtonsRendered = true;
+        } catch (error) {
+            console.error('Error initializing PayPal button:', error);
+            alert('There was an error loading the payment system. Please refresh the page and try again.');
+        }
+    }
   </script>
 </body>
 </html>
