@@ -555,6 +555,24 @@
       box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
     }
 
+    .no-wifi-badge {
+      background: linear-gradient(45deg, #4361ee, #3f37c9);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-left: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .game-card:hover .no-wifi-badge {
+      transform: scale(1.05);
+      box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 1rem;
@@ -703,7 +721,7 @@
         <!-- Ocean triangles -->
         <path d="M20 65 L50 55 L80 65 L80 75 L20 75 Z" fill="url(#seaGradient)"/>
         
-        <!-- Sun circle -->
+        <!-- Snow circle -->
         <circle cx="50" cy="50" r="8" fill="white"/>
         
         <!-- Stars -->
@@ -727,7 +745,7 @@
   <div class="hero">
     <div class="hero-content">
       <h2>Welcome to InfiniteHorizonGames</h2>
-      <p>Embark on an extraordinary gaming journey with our innovative 2D games.</p>
+      <p>Embark on an extraordinary gaming journey with our innovative 2D and 3D games.</p>
       <button class="cta-button">Explore Games</button>
     </div>
   </div>
@@ -753,6 +771,9 @@
               <span class="badge">Free</span>
               <span class="no-ads-badge">
                 <i class="fas fa-ban"></i> No Ads
+              </span>
+              <span class="no-wifi-badge">
+                <i class="fas fa-wifi-slash"></i> No WiFi
               </span>
             </div>
           </div>
@@ -784,6 +805,9 @@
               <span class="no-ads-badge">
                 <i class="fas fa-ban"></i> No Ads
               </span>
+              <span class="no-wifi-badge">
+                <i class="fas fa-wifi-slash"></i> No WiFi
+              </span>
             </div>
           </div>
           <p>A 2D top-down shooter where you battle against AI enemies like ChatGPT, Copilot, and Gemini. Shoot lasers and grenades in this action-packed adventure!</p>
@@ -814,6 +838,9 @@
                 <i class="fas fa-trophy"></i> BEST
               </span>
               <span class="badge">Coming Soon</span>
+              <span class="no-wifi-badge">
+                <i class="fas fa-wifi-slash"></i> No WiFi
+              </span>
             </div>
           </div>
           <p>Coming soon!</p>
@@ -971,6 +998,13 @@
         if (e.target.getAttribute('href') === '#contact') {
           e.preventDefault();
           alert('Contact email: notmousasalloum@gmail.com');
+        } else {
+          e.preventDefault();
+          const targetId = e.target.getAttribute('href').substring(1);
+          document.getElementById(targetId).scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       });
     });
