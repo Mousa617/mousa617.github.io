@@ -1,8 +1,10 @@
 InfiniteHorizonGames
+
+Website:  https://mousa617.github.io/InfiniteHorizonGames.html
+
 Welcome to InfiniteHorizonGames! This is the development repository where we showcase our ongoing game projects. Note: This is not the official website. For full game descriptions, download buttons, dev info, supportsections, and detailed information, please visit our official website.
 
-Our Games
-SnowBoard Rush: Race and Dodge
+Our Games:
 
 BalloonBrawl
 
@@ -28,6 +30,11 @@ Linux
 
 For download links, please check the official website wich is: https://mousa617.github.io/InfiniteHorizonGames.html
 
+Ongoing Game Projects :
+
+NONAME(fps but with alot of new features,mechanics,etc)
+Prison Sednaya(horror game in a haunted real prison in syria)
+NONAME(a vr first person soccer game)
 Contact Us
 For inquiries, feedback, or collaborations, feel free to reach out to us:
 
