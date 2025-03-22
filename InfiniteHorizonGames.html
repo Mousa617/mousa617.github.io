@@ -1,10 +1,111 @@
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="mousa617.github.io/horizon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InfiniteHorizonGames - Official Website</title>
+  <title>InfiniteHorizonGames - Innovative 2D & 3D Game Development Studio | Free Games</title>
+  <meta name="description" content="InfiniteHorizonGames is an independent game development studio creating innovative 2D and 3D games. Play our free, ad-free games on mobile, PC, and browser platforms.">
+  <meta name="keywords" content="InfiniteHorizonGames, free games, indie games, mobile games, browser games, PC games, game development, BalloonBrawl, AI Apocalypse, RoastBattleRoyale, FreeRide">
+  <meta name="author" content="Mousa Salloum">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="InfiniteHorizonGames - Innovative Game Development Studio">
+  <meta property="og:description" content="Play our unique collection of free, ad-free games across mobile, PC, and browser platforms. Created by indie developer Mousa Salloum.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://infinitehorizongames.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="InfiniteHorizonGames">
+  <meta name="twitter:description" content="Innovative indie game development studio creating free, ad-free games for all platforms.">
+  
+  <!-- Schema.org markup for Google -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "InfiniteHorizonGames",
+      "url": "https://infinitehorizongames.com",
+      "logo": "https://infinitehorizongames.com/logo.svg",
+      "description": "Independent game development studio creating innovative 2D and 3D games",
+      "founder": {
+        "@type": "Person",
+        "name": "Mousa Salloum",
+        "jobTitle": "Game Developer",
+        "location": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Montreal",
+            "addressRegion": "Quebec",
+            "addressCountry": "Canada"
+          }
+        }
+      },
+      "sameAs": [
+        "https://infinitehorizongames.itch.io/",
+        "https://play.google.com/store/apps/dev?id=4830407566200037539"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "InfiniteHorizonGames",
+      "url": "https://infinitehorizongames.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://infinitehorizongames.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "VideoGame",
+          "name": "BalloonBrawl",
+          "description": "A fast-paced arena game where players control balloons with darts in chaotic battles",
+          "operatingSystem": ["Windows", "Linux", "Android"],
+          "applicationCategory": "Game",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "VideoGame",
+          "name": "AI Apocalypse",
+          "description": "A 2D top-down shooter battling against AI enemies",
+          "operatingSystem": ["Windows", "Linux", "Android"],
+          "applicationCategory": "Game",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "VideoGame",
+          "name": "RoastBattleRoyale",
+          "description": "A witty roasting competition against AI",
+          "operatingSystem": "Web Browser",
+          "applicationCategory": "Game",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+  </script>
+
+  <link rel="canonical" href="https://infinitehorizongames.com">
   <meta name="google-site-verification" content="e7d7e7Bp1ADmZJCmQaNv8mrfvc365KVTG315aJA0RSI">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -476,6 +577,63 @@
       box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
     }
 
+    .contact-section {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .contact-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(64, 224, 208, 0.2);
+      border-color: var(--accent-color);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+    }
+
+    .contact-info i {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .contact-info a {
+      color: var(--light-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.3);
       padding: 3rem 2rem 1rem;
@@ -792,7 +950,7 @@
           </div>
           <div class="game-links">
             <a href="https://infinitehorizongames.itch.io/balloonbrawl" class="button">Get on Itch.io</a>
-            <a href="https://play.google.com/store/games?hl=en" class="button">Get on PlayStore</a>
+            <a href="https://play.google.com/store/apps/details?id=com.InfiniteHorizonGames.Mousa" class="button">Get on PlayStore</a>
           </div>
         </div>
       </div>
@@ -955,6 +1113,17 @@
     </div>
   </section>
 
+  <section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <div class="contact-container">
+      <p>Feel free to reach out with any questions, feedback, or collaboration opportunities!</p>
+      <div class="contact-info">
+        <i class="fas fa-envelope"></i>
+        <a href="/cdn-cgi/l/email-protection#ed8382998082989e8c9e8c8181829880ad8a808c8481c38e8280"><span class="__cf_email__" data-cfemail="90feffe4fdffe5e3f1e3f1fcfcffe5fdd0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="donate-section">
     <h2>Support the Developer</h2>
     <div class="donate-container">
@@ -993,20 +1162,15 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', (e) => {
-        if (e.target.getAttribute('href') === '#contact') {
-          e.preventDefault();
-          alert('Contact email: notmousasalloum@gmail.com');
-        } else {
-          e.preventDefault();
-          const targetId = e.target.getAttribute('href').substring(1);
-          document.getElementById(targetId).scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
       });
     });
 
