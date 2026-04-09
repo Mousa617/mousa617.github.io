@@ -1,1 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>MiniNest — Formerly InfiniteHorizonGames</title>
+<style>
+:root{
+  --bg-1:#FFFAF6;
+  --card:#FFFFFF;
+  --muted:#6b6b6b;
+  --accent:#FF7A66;
+  --accent-2:#FFC37A;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 8px 24px rgba(20,20,20,0.08);
+  --radius:14px;
+  --pad:20px;
+  --maxw:760px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
 
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,var(--bg-1) 0%, #FFF7F3 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  font-size:16px;
+  line-height:1.4;
+}
+
+.stage{
+  width:100%;
+  max-width:var(--maxw);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+  border-radius:20px;
+  padding:24px;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-height:calc(100vh - 48px);
+  justify-content:center;
+}
+
+/* moving background blobs */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  display:block;
+}
+.bg-svg{
+  width:120%;
+  height:120%;
+  transform:translate(-10%,-10%);
+  will-change:transform;
+  display:block;
+}
+
+/* animated blob tweaks */
+.blob{
+  transform-origin:center;
+  will-change:transform;
+  transition:transform 200ms linear;
+  mix-blend-mode:screen;
+  opacity:0.95;
+  filter: saturate(1.05) blur(0px);
+  animation-duration:18s;
+  animation-iteration-count:infinite;
+  animation-timing-function: ease-in-out;
+}
+.blob-1 { animation-name:float1; animation-duration:20s; }
+.blob-2 { animation-name:float2; animation-duration:26s; }
+.blob-3 { animation-name:float3; animation-duration:22s; }
+
+@keyframes float1 {
+  0% { transform: translate(0px,0px) scale(1); }
+  50%{ transform: translate(18px,-14px) scale(1.06); }
+  100%{ transform: translate(0px,0px) scale(1); }
+}
+@keyframes float2 {
+  0% { transform: translate(0px,0px) scale(1); }
+  50%{ transform: translate(-22px,20px) scale(1.08); }
+  100%{ transform: translate(0px,0px) scale(1); }
+}
+@keyframes float3 {
+  0% { transform: translate(0px,0px) scale(1); }
+  50%{ transform: translate(10px,10px) scale(1.04); }
+  100%{ transform: translate(0px,0px) scale(1); }
+}
+
+/* ensure main content sits above background */
+.stage{ position:relative; z-index:1; }
+
+/* header */
+.brand{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.logo{
+  width:72px;
+  height:72px;
+  flex:0 0 72px;
+  border-radius:14px;
+  box-shadow: 0 6px 18px rgba(255,122,102,0.12);
+}
+.titles{display:flex;flex-direction:column}
+.current{
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:0.2px;
+}
+.former{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* content card */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+  border-radius:var(--radius);
+  padding:var(--pad);
+  box-shadow:0 6px 20px rgba(16,16,16,0.04);
+  border:1px solid rgba(18,18,18,0.03);
+}
+.headline{
+  margin:0 0 8px 0;
+  font-size:20px;
+}
+.lead{
+  margin:0 0 16px 0;
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* actions */
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 16px;
+  min-height:44px;
+  border-radius:12px;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:600;
+  font-size:15px;
+}
+.btn.primary{
+  background: linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%);
+  color:white;
+  box-shadow: 0 8px 22px rgba(255,122,102,0.18);
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(255,122,102,0.14);
+}
+
+/* reveal section */
+.more{
+  margin-top:14px;
+  padding:12px;
+  border-radius:10px;
+  background:rgba(255,250,248,0.6);
+  font-size:14px;
+  color:var(--muted);
+  border:1px solid rgba(18,18,18,0.03);
+}
+
+/* footer */
+.foot{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-top:auto;
+}
+
+/* mobile fit: ensure no vertical scrolling on one-screen devices */
+@media (max-height:640px){
+  .stage{padding:16px; min-height:auto; height:100vh; justify-content:center}
+  .logo{width:60px;height:60px}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <svg class="bg-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bgg1" x1="0" x2="1">
+        <stop offset="0" stop-color="#FFF0EA"/>
+        <stop offset="1" stop-color="#FFE8D9"/>
+      </linearGradient>
+      <linearGradient id="bgg2" x1="0" x2="1">
+        <stop offset="0" stop-color="#FFF7F3"/>
+        <stop offset="1" stop-color="#FFF2EE"/>
+      </linearGradient>
+      <filter id="blurMe" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="42" />
+      </filter>
+    </defs>
+
+    <g filter="url(#blurMe)" opacity="0.9">
+      <ellipse class="blob blob-1" cx="180" cy="140" rx="260" ry="120" fill="url(#bgg1)"/>
+      <ellipse class="blob blob-2" cx="820" cy="420" rx="300" ry="150" fill="url(#bgg2)" opacity="0.95"/>
+      <ellipse class="blob blob-3" cx="520" cy="80" rx="180" ry="90" fill="#FFF3EE" opacity="0.6"/>
+    </g>
+  </svg>
+</div>
+
+<main class="stage">
+  <header class="brand">
+    <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#FFC37A"/>
+          <stop offset="1" stop-color="#FF7A66"/>
+        </linearGradient>
+      </defs>
+      <rect rx="20" ry="20" width="120" height="120" fill="url(#g)"/>
+      <g transform="translate(22,20)" fill="#ffffff">
+        <path d="M18 6c-6 0-11 5-11 11v28c0 6 5 11 11 11h34c6 0 11-5 11-11V17c0-6-5-11-11-11H18zM30 40c0 6-4 10-10 10s-10-4-10-10 4-10 10-10 10 4 10 10z" opacity="0.12"/>
+        <path d="M8 8h56v56H8z" fill="none"/>
+        <circle cx="24" cy="36" r="10" />
+        <path d="M42 10c-4 0-8 3-8 7v30c0 4 4 7 8 7s8-3 8-7V17c0-4-4-7-8-7z"/>
+      </g>
+    </svg>
+    <div class="titles">
+      <div class="current">MiniNest Games</div>
+      <div class="former">formerly InfiniteHorizonGames</div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h1 class="headline">A quick note from the nest</h1>
+    <p class="lead">InfiniteHorizonGames was my first gamedev alias — the early projects are small and rough. I've grown a lot since then. Today's work ships under MiniNest Games, with bigger polish, better design, and brighter ideas.</p>
+    <div class="actions">
+      <a id="visit-btn" class="btn primary" href="https://mininest-games.netlify.app" target="_blank" rel="noopener">Visit MiniNest Games</a>
+      <button id="more-btn" class="btn ghost">Why the change?</button>
+    </div>
+    <div id="more" class="more" hidden>
+      <p>Short version: experience and practice. The old name belonged to my earliest experiments — now I focus on tighter gameplay, nicer visuals, and playable fun. You can still find the old stuff if you're curious, but for the best experience head to MiniNest.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <small>Thanks for checking in — enjoy the games.</small>
+  </footer>
+</main>
+
+<script>
+/* Minimal interactions: reveal explanation and subtle focus animation + parallax background */
+(() => {
+  const moreBtn = document.getElementById('more-btn');
+  const more = document.getElementById('more');
+  const visit = document.getElementById('visit-btn');
+
+  moreBtn.addEventListener('click', () => {
+    const showing = !(more.hidden);
+    if(showing){
+      more.hidden = true;
+      moreBtn.textContent = 'Why the change?';
+      moreBtn.classList.remove('active');
+    } else {
+      more.hidden = false;
+      moreBtn.textContent = 'Hide';
+      moreBtn.classList.add('active');
+      more.focus?.();
+    }
+  });
+
+  // small click ripple effect on primary button for polish
+  visit.addEventListener('pointerdown', (e) => {
+    const el = visit;
+    const rect = el.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.style.position = 'absolute';
+    ripple.style.left = (e.clientX - rect.left) + 'px';
+    ripple.style.top = (e.clientY - rect.top) + 'px';
+    ripple.style.width = ripple.style.height = '6px';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'rgba(255,255,255,0.45)';
+    ripple.style.transform = 'translate(-50%,-50%) scale(1)';
+    ripple.style.opacity = '0.9';
+    ripple.style.pointerEvents = 'none';
+    ripple.style.transition = 'transform 500ms ease, opacity 500ms ease';
+    el.style.position = 'relative';
+    el.appendChild(ripple);
+    requestAnimationFrame(()=> {
+      ripple.style.transform = 'translate(-50%,-50%) scale(24)';
+      ripple.style.opacity = '0';
+    });
+    setTimeout(()=> ripple.remove(), 520);
+  });
+
+  // pointer parallax for background blobs
+  const bg = document.querySelector('.bg-svg');
+  if (bg && window.matchMedia('(pointer:fine)').matches) {
+    const blobs = bg.querySelectorAll('.blob');
+    const strength = 18; // pixels of max offset
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+
+    const onMove = (e) => {
+      const x = (e.clientX / w) - 0.5;
+      const y = (e.clientY / h) - 0.5;
+      blobs.forEach((b, i) => {
+        const depth = (i + 1) / blobs.length; // 0..1
+        const tx = -x * strength * depth;
+        const ty = -y * strength * depth;
+        b.style.transform = `translate(${tx}px, ${ty}px)`;
+      });
+    };
+
+    window.addEventListener('pointermove', onMove, {passive:true});
+
+    // handle resize
+    window.addEventListener('resize', () => { w = window.innerWidth; h = window.innerHeight; });
+  }
+})();
+</script>
+</body>
+</html>
